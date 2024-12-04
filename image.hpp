@@ -432,6 +432,10 @@ namespace png {
 			m_info.set_text(txt);
 		}
 
+		inline const auto &get_text_map() const {
+			return m_info.get_text_map();
+		}
+
 	protected:
 		/**
 		 * \brief A common base class template for pixel_consumer and

@@ -37,6 +37,10 @@
 #include "text.hpp"
 #include "types.hpp"
 
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 namespace png {
 
 	/**
@@ -165,6 +169,10 @@ namespace png {
 			return m_text;
 		}
 
+		inline const auto &get_text_map() const {
+			return m_text_map;
+		}
+
 		void set_text(std::vector<text> const &txt) {
 			m_text = txt;
 		}
@@ -186,6 +194,7 @@ namespace png {
 		filter_type m_filter_type;
 		palette m_palette;
 		std::vector<text> m_text;
+		std::unordered_map<std::string, std::string> m_text_map;
 		tRNS m_tRNS;
 		double m_gamma;
 	};

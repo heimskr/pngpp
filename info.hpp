@@ -65,10 +65,10 @@ namespace png {
 			int num_text = -1;
 
 			if (png_get_text(m_png, m_info, &raw_text, &num_text)) {
-				m_text.clear();
-				m_text.reserve(num_text);
+				m_text_map.clear();
 				for (int i = 0; i < num_text; ++i) {
-					m_text.emplace_back(raw_text[i]);
+					const auto &text = raw_text[i];
+					m_text_map.try_emplace(text.key, text.text, text.text_length);
 				}
 			}
 
