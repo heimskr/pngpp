@@ -1,0 +1,4 @@
+/example/pixel_generator
+*.dep
+*.o
+generated.png
