@@ -31,72 +31,62 @@
 #ifndef PNGPP_PIXEL_TRAITS_HPP_INCLUDED
 #define PNGPP_PIXEL_TRAITS_HPP_INCLUDED
 
-#include <limits>
 #include "types.hpp"
+#include <limits>
 
-namespace png
-{
+namespace png {
 
-    /**
-     * \brief Pixel traits class template.
-     *
-     * Provides information about pixel color type and components bit depth.
-     * Not implemented--see specializations.
-     *
-     * \see  pixel_traits<rgb_pixel>, pixel_traits<rgba_pixel>
-     */
-    template< typename pixel > struct pixel_traits;
+	/**
+	 * \brief Pixel traits class template.
+	 *
+	 * Provides information about pixel color type and components bit depth.
+	 * Not implemented--see specializations.
+	 *
+	 * \see  pixel_traits<rgb_pixel>, pixel_traits<rgba_pixel>
+	 */
+	template <typename pixel>
+	struct pixel_traits;
 
-    /**
-     * \brief Basic pixel traits class template.
-     *
-     * Provides common implementation for various pixel_traits<>
-     * specializations.
-     */
-    template< typename pixel,
-              typename component,
-              color_type pixel_color_type,
-              int channels_value = sizeof(pixel) / sizeof(component),
-              int bit_depth_value = std::numeric_limits< component >::digits >
-    struct basic_pixel_traits
-    {
-        typedef pixel pixel_type;
-        typedef component component_type;
+	/**
+	 * \brief Basic pixel traits class template.
+	 *
+	 * Provides common implementation for various pixel_traits<>
+	 * specializations.
+	 */
+	template <typename pixel, typename component, color_type pixel_color_type, int channels_value = sizeof(pixel) / sizeof(component), int bit_depth_value = std::numeric_limits<component>::digits>
+	struct basic_pixel_traits {
+		typedef pixel pixel_type;
+		typedef component component_type;
 
-        static color_type get_color_type()
-        {
-            return pixel_color_type;
-        }
-        
-        static const int channels = channels_value;
-        static int get_channels()
-        {
-            return channels;
-        }
-        
-        static const int bit_depth = bit_depth_value;
-        static int get_bit_depth()
-        {
-            return bit_depth;
-        }
-    };
+		static color_type get_color_type() {
+			return pixel_color_type;
+		}
 
-    /**
-     * \brief Basic pixel traits class template for pixels with alpha
-     * channel.
-     */
-    template< typename component >
-    struct basic_alpha_pixel_traits
-    {
-        /**
-         * \brief Returns the default alpha channel filler for full
-         * opacity.
-         */
-        static component get_alpha_filler()
-        {
-            return std::numeric_limits< component >::max();
-        }
-    };
+		static const int channels = channels_value;
+		static int get_channels() {
+			return channels;
+		}
+
+		static const int bit_depth = bit_depth_value;
+		static int get_bit_depth() {
+			return bit_depth;
+		}
+	};
+
+	/**
+	 * \brief Basic pixel traits class template for pixels with alpha
+	 * channel.
+	 */
+	template <typename component>
+	struct basic_alpha_pixel_traits {
+		/**
+		 * \brief Returns the default alpha channel filler for full
+		 * opacity.
+		 */
+		static component get_alpha_filler() {
+			return std::numeric_limits<component>::max();
+		}
+	};
 
 } // namespace png
 

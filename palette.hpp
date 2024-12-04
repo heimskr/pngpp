@@ -31,17 +31,16 @@
 #ifndef PNGPP_PALETTE_HPP_INCLUDED
 #define PNGPP_PALETTE_HPP_INCLUDED
 
-#include <vector>
 #include "color.hpp"
+#include <vector>
 
-namespace png
-{
+namespace png {
 
-    /**
-     * \brief The palette type.  Currently implemented as \c std::vector
-     * of png::color.
-     */
-    typedef std::vector< color > palette;
+	/**
+	 * \brief The palette type.  Currently implemented as \c std::vector
+	 * of png::color.
+	 */
+	typedef std::vector<color> palette;
 
 } // namespace png
 

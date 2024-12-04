@@ -33,46 +33,36 @@
 
 #include <png.h>
 
-namespace png
-{
+namespace png {
 
-    /**
-     * \brief PNG text struct extension.  Adds constructors.
-     */
-    struct text
-        : png_text
-    {
-        explicit text(png_const_charp key,
-                      png_const_charp txt,
-                      int compression = PNG_TEXT_COMPRESSION_zTXt,
-                      size_t text_length = 0,
-                      size_t itxt_length = 0,
-                      png_charp lang = nullptr,
-                      png_charp lang_key = nullptr)
-        {
-            this->compression = compression;
-            this->key = const_cast< png_charp >(key);
-            this->png_text::text = const_cast< png_charp>(txt);
-            this->text_length = text_length;
-            this->itxt_length = itxt_length;
-            this->lang = lang;
-            this->lang_key = lang_key;
-        }
+	/**
+	 * \brief PNG text struct extension.  Adds constructors.
+	 */
+	struct text : png_text {
+		explicit text(png_const_charp key, png_const_charp txt, int compression = PNG_TEXT_COMPRESSION_zTXt, size_t text_length = 0, size_t itxt_length = 0, png_charp lang = nullptr,
+			png_charp lang_key = nullptr) {
+			this->compression = compression;
+			this->key = const_cast<png_charp>(key);
+			this->png_text::text = const_cast<png_charp>(txt);
+			this->text_length = text_length;
+			this->itxt_length = itxt_length;
+			this->lang = lang;
+			this->lang_key = lang_key;
+		}
 
-        /**
-         * \brief Initializes text with a copy of png_text object.
-         */
-        text(png_text const& other)
-        {
-            this->compression = other.compression;
-            this->key = other.key;
-            this->png_text::text = other.text;
-            this->text_length = other.text_length;
-            this->itxt_length = other.itxt_length;
-            this->lang = other.lang;
-            this->lang_key = other.lang_key;
-        }
-    };
+		/**
+		 * \brief Initializes text with a copy of png_text object.
+		 */
+		text(png_text const &other) {
+			this->compression = other.compression;
+			this->key = other.key;
+			this->png_text::text = other.text;
+			this->text_length = other.text_length;
+			this->itxt_length = other.itxt_length;
+			this->lang = other.lang;
+			this->lang_key = other.lang_key;
+		}
+	};
 
 } // namespace png
 

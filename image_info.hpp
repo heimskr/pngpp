@@ -31,209 +31,177 @@
 #ifndef PNGPP_IMAGE_INFO_HPP_INCLUDED
 #define PNGPP_IMAGE_INFO_HPP_INCLUDED
 
-#include "types.hpp"
 #include "palette.hpp"
-#include "text.hpp"
-#include "tRNS.hpp"
 #include "pixel_traits.hpp"
+#include "tRNS.hpp"
+#include "text.hpp"
+#include "types.hpp"
 
-namespace png
-{
+namespace png {
 
-    /**
-     * \brief Holds information about PNG image.
-     *
-     * \see image, generator, consumer
-     */
-    class image_info
-    {
-    public:
-        /**
-         * \brief Constructs the image_info object with default values
-         * for color_type, interlace_type, compression_method and
-         * filter_type.
-         */
-        image_info()
-            : m_width(0),
-              m_height(0),
-              m_bit_depth(0),
-              m_color_type(color_type_none),
-              m_interlace_type(interlace_none),
-              m_compression_type(compression_type_default),
-              m_filter_type(filter_type_default),
-              m_gamma(0.0)
-        {
-        }
+	/**
+	 * \brief Holds information about PNG image.
+	 *
+	 * \see image, generator, consumer
+	 */
+	class image_info {
+	public:
+		/**
+		 * \brief Constructs the image_info object with default values
+		 * for color_type, interlace_type, compression_method and
+		 * filter_type.
+		 */
+		image_info() :
+			m_width(0),
+			m_height(0),
+			m_bit_depth(0),
+			m_color_type(color_type_none),
+			m_interlace_type(interlace_none),
+			m_compression_type(compression_type_default),
+			m_filter_type(filter_type_default),
+			m_gamma(0.0) {
+		}
 
-        uint_32 get_width() const
-        {
-            return m_width;
-        }
+		uint_32 get_width() const {
+			return m_width;
+		}
 
-        void set_width(uint_32 width)
-        {
-            m_width = width;
-        }
+		void set_width(uint_32 width) {
+			m_width = width;
+		}
 
-        uint_32 get_height() const
-        {
-            return m_height;
-        }
+		uint_32 get_height() const {
+			return m_height;
+		}
 
-        void set_height(uint_32 height)
-        {
-            m_height = height;
-        }
+		void set_height(uint_32 height) {
+			m_height = height;
+		}
 
-        color_type get_color_type() const
-        {
-            return m_color_type;
-        }
+		color_type get_color_type() const {
+			return m_color_type;
+		}
 
-        void set_color_type(color_type color_space)
-        {
-            m_color_type = color_space;
-        }
+		void set_color_type(color_type color_space) {
+			m_color_type = color_space;
+		}
 
-        int get_bit_depth() const
-        {
-            return m_bit_depth;
-        }
+		int get_bit_depth() const {
+			return m_bit_depth;
+		}
 
-        void set_bit_depth(int bit_depth)
-        {
-            m_bit_depth = bit_depth;
-        }
+		void set_bit_depth(int bit_depth) {
+			m_bit_depth = bit_depth;
+		}
 
-        interlace_type get_interlace_type() const
-        {
-            return m_interlace_type;
-        }
+		interlace_type get_interlace_type() const {
+			return m_interlace_type;
+		}
 
-        void set_interlace_type(interlace_type interlace)
-        {
-            m_interlace_type = interlace;
-        }
+		void set_interlace_type(interlace_type interlace) {
+			m_interlace_type = interlace;
+		}
 
-        compression_type get_compression_type() const
-        {
-            return m_compression_type;
-        }
+		compression_type get_compression_type() const {
+			return m_compression_type;
+		}
 
-        void set_compression_type(compression_type compression)
-        {
-            m_compression_type = compression;
-        }
+		void set_compression_type(compression_type compression) {
+			m_compression_type = compression;
+		}
 
-        filter_type get_filter_type() const
-        {
-            return m_filter_type;
-        }
+		filter_type get_filter_type() const {
+			return m_filter_type;
+		}
 
-        void set_filter_type(filter_type filter)
-        {
-            m_filter_type = filter;
-        }
+		void set_filter_type(filter_type filter) {
+			m_filter_type = filter;
+		}
 
-        palette const& get_palette() const
-        {
-            return m_palette;
-        }
+		palette const &get_palette() const {
+			return m_palette;
+		}
 
-        palette& get_palette()
-        {
-            return m_palette;
-        }
+		palette &get_palette() {
+			return m_palette;
+		}
 
-        void set_palette(palette const& plte)
-        {
-            m_palette = plte;
-        }
+		void set_palette(palette const &plte) {
+			m_palette = plte;
+		}
 
-        /**
-         * \brief Removes all entries from the palette.
-         */
-        void drop_palette()
-        {
-            m_palette.clear();
-        }
+		/**
+		 * \brief Removes all entries from the palette.
+		 */
+		void drop_palette() {
+			m_palette.clear();
+		}
 
-        tRNS const& get_tRNS() const
-        {
-            return m_tRNS;
-        }
+		tRNS const &get_tRNS() const {
+			return m_tRNS;
+		}
 
-        tRNS& get_tRNS()
-        {
-            return m_tRNS;
-        }
+		tRNS &get_tRNS() {
+			return m_tRNS;
+		}
 
-        void set_tRNS(tRNS const& trns)
-        {
-            m_tRNS = trns;
-        }
+		void set_tRNS(tRNS const &trns) {
+			m_tRNS = trns;
+		}
 
-        double get_gamma() const
-        {
-            return m_gamma;
-        }
+		double get_gamma() const {
+			return m_gamma;
+		}
 
-        void set_gamma(double gamma)
-        {
-            m_gamma = gamma;
-        }
+		void set_gamma(double gamma) {
+			m_gamma = gamma;
+		}
 
-        std::vector< text > const& get_text() const
-        {
-            return m_text;
-        }
+		std::vector<text> const &get_text() const {
+			return m_text;
+		}
 
-        std::vector< text >& get_text()
-        {
-            return m_text;
-        }
+		std::vector<text> &get_text() {
+			return m_text;
+		}
 
-        void set_text(std::vector< text > const& txt)
-        {
-            m_text = txt;
-        }
+		void set_text(std::vector<text> const &txt) {
+			m_text = txt;
+		}
 
-        /**
-         * \brief Removes all entries from the text comments.
-         */
-        void drop_text()
-        {
-            m_text.clear();
-        }
+		/**
+		 * \brief Removes all entries from the text comments.
+		 */
+		void drop_text() {
+			m_text.clear();
+		}
 
-    protected:
-        uint_32 m_width;
-        uint_32 m_height;
-        int m_bit_depth;
-        color_type m_color_type;
-        interlace_type m_interlace_type;
-        compression_type m_compression_type;
-        filter_type m_filter_type;
-        palette m_palette;
-        std::vector< text > m_text;
-        tRNS m_tRNS;
-        double m_gamma;
-    };
+	protected:
+		uint_32 m_width;
+		uint_32 m_height;
+		int m_bit_depth;
+		color_type m_color_type;
+		interlace_type m_interlace_type;
+		compression_type m_compression_type;
+		filter_type m_filter_type;
+		palette m_palette;
+		std::vector<text> m_text;
+		tRNS m_tRNS;
+		double m_gamma;
+	};
 
-    /**
-     * \brief Returns an image_info object with color_type and
-     * bit_depth fields setup appropriate for the \c pixel type.
-     */
-    template< typename pixel >
-    image_info
-    make_image_info()
-    {
-        typedef pixel_traits< pixel > traits;
-        image_info info;
-        info.set_color_type(traits::get_color_type());
-        info.set_bit_depth(traits::get_bit_depth());
-        return info;
-    }
+	/**
+	 * \brief Returns an image_info object with color_type and
+	 * bit_depth fields setup appropriate for the \c pixel type.
+	 */
+	template <typename pixel>
+	image_info make_image_info() {
+		typedef pixel_traits<pixel> traits;
+		image_info info;
+		info.set_color_type(traits::get_color_type());
+		info.set_bit_depth(traits::get_bit_depth());
+		return info;
+	}
 
 } // namespace png
 

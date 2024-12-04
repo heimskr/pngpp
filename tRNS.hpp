@@ -31,17 +31,16 @@
 #ifndef PNGPP_TRNS_HPP_INCLUDED
 #define PNGPP_TRNS_HPP_INCLUDED
 
-#include <vector>
 #include "color.hpp"
+#include <vector>
 
-namespace png
-{
+namespace png {
 
-    /**
-     * \brief The palette transparency map type.  Currently
-     * implemented as \c std::vector of png::byte.
-     */
-    typedef std::vector< byte > tRNS;
+	/**
+	 * \brief The palette transparency map type.  Currently
+	 * implemented as \c std::vector of png::byte.
+	 */
+	typedef std::vector<byte> tRNS;
 
 } // namespace png
 

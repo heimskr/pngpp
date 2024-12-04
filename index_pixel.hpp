@@ -31,81 +31,65 @@
 #ifndef PNGPP_INDEX_PIXEL_HPP_INCLUDED
 #define PNGPP_INDEX_PIXEL_HPP_INCLUDED
 
-#include "types.hpp"
 #include "packed_pixel.hpp"
 #include "pixel_traits.hpp"
+#include "types.hpp"
 
-namespace png
-{
+namespace png {
 
-    /**
-     * \brief The 8-bit Indexed (colormap) pixel type.
-     */
-    class index_pixel
-    {
-    public:
-        index_pixel(byte index = 0)
-            : m_index(index)
-        {
-        }
+	/**
+	 * \brief The 8-bit Indexed (colormap) pixel type.
+	 */
+	class index_pixel {
+	public:
+		index_pixel(byte index = 0) : m_index(index) {
+		}
 
-        operator byte() const
-        {
-            return m_index;
-        }
+		operator byte() const {
+			return m_index;
+		}
 
-    private:
-        byte m_index;
-    };
+	private:
+		byte m_index;
+	};
 
-    /**
-     * \brief The packed indexed pixel class template.  The available
-     * specializations are for 1-, 2- and 4-bit pixels.
-     */
-    template< int bits >
-    class packed_index_pixel
-        : public packed_pixel< bits >
-    {
-    public:
-        packed_index_pixel(byte value = 0)
-            : packed_pixel< bits >(value)
-        {
-        }
-    };
+	/**
+	 * \brief The packed indexed pixel class template.  The available
+	 * specializations are for 1-, 2- and 4-bit pixels.
+	 */
+	template <int bits>
+	class packed_index_pixel : public packed_pixel<bits> {
+	public:
+		packed_index_pixel(byte value = 0) : packed_pixel<bits>(value) {
+		}
+	};
 
-    /**
-     * \brief The 1-bit Indexed pixel type.
-     */
-    typedef packed_index_pixel< 1 > index_pixel_1;
+	/**
+	 * \brief The 1-bit Indexed pixel type.
+	 */
+	typedef packed_index_pixel<1> index_pixel_1;
 
-    /**
-     * \brief The 1-bit Indexed pixel type.
-     */
-    typedef packed_index_pixel< 2 > index_pixel_2;
+	/**
+	 * \brief The 1-bit Indexed pixel type.
+	 */
+	typedef packed_index_pixel<2> index_pixel_2;
 
-    /**
-     * \brief The 1-bit Indexed pixel type.
-     */
-    typedef packed_index_pixel< 4 > index_pixel_4;
+	/**
+	 * \brief The 1-bit Indexed pixel type.
+	 */
+	typedef packed_index_pixel<4> index_pixel_4;
 
-    /**
-     * \brief Pixel traits specialization for index_pixel.
-     */
-    template<>
-    struct pixel_traits< index_pixel >
-        : basic_pixel_traits< index_pixel, byte, color_type_palette >
-    {
-    };
+	/**
+	 * \brief Pixel traits specialization for index_pixel.
+	 */
+	template <>
+	struct pixel_traits<index_pixel> : basic_pixel_traits<index_pixel, byte, color_type_palette> { };
 
-    /**
-     * \brief Pixel traits specialization for packed_index_pixel.
-     */
-    template< int bits >
-    struct pixel_traits< packed_index_pixel< bits > >
-        : basic_pixel_traits< packed_index_pixel< bits >, byte,
-                              color_type_palette, /* channels = */ 1, bits >
-    {
-    };
+	/**
+	 * \brief Pixel traits specialization for packed_index_pixel.
+	 */
+	template <int bits>
+	struct pixel_traits<packed_index_pixel<bits>> : basic_pixel_traits<packed_index_pixel<bits>, byte, color_type_palette, /* channels = */ 1, bits> { };
 
 } // namespace png
 
